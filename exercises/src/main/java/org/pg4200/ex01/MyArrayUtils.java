@@ -9,7 +9,15 @@ public class MyArrayUtils implements ArrayUtils {
      */
     @Override
     public int min(int[] array) throws IllegalArgumentException {
-        return 0;
+        testSize(array);
+        int result = Integer.MAX_VALUE;
+        for (int m:array
+             ) {
+            if (m<result) {
+                result = m;
+            }
+        }
+        return result;
     }
 
     /**
@@ -19,7 +27,19 @@ public class MyArrayUtils implements ArrayUtils {
      */
     @Override
     public int max(int[] array) throws IllegalArgumentException {
-        return 0;
+        testSize(array);
+        int result = Integer.MIN_VALUE;
+        for (int m:array
+        ) {
+            if (m>result) {
+                result = m;
+            }
+        }
+        return result;
+    }
+    void testSize(int[] array) {
+        if (array == null || array.length == 0)
+            throw new IllegalArgumentException("Null or empty arrays not allowed");
     }
 
     /**
@@ -29,6 +49,11 @@ public class MyArrayUtils implements ArrayUtils {
      */
     @Override
     public double mean(int[] array) throws IllegalArgumentException {
-        return 0;
+        testSize(array);
+        int returnValue = 0;
+        for (int i:array) {
+            returnValue += i;
+        }
+        return returnValue/array.length;
     }
 }
